@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" role="img" aria-label="Foto dell'artigiana al lavoro, in arrivo">
+  <rect width="1000" height="750" fill="#EDE6D8"/>
+  <g fill="none" stroke="#A88B5A" stroke-width="1.6" opacity="0.5">
+    <path d="M100 100 Q 160 50 220 100 Q 160 150 100 100 Z"/>
+    <path d="M900 650 Q 840 700 780 650 Q 840 600 900 650 Z"/>
+    <path d="M120 100 Q 500 375 880 650" stroke-width="1"/>
+    <circle cx="500" cy="375" r="130" stroke-width="1"/>
+  </g>
+  <g font-family="Georgia, 'Playfair Display', serif" fill="#1A1A1A">
+    <text x="500" y="380" text-anchor="middle" font-size="44" letter-spacing="8" opacity="0.75">AP</text>
+    <text x="500" y="420" text-anchor="middle" font-size="17" letter-spacing="2.5" fill="#4A4A44" opacity="0.85">Foto in arrivo</text>
+  </g>
+</svg>

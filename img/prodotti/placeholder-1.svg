@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Foto della borsa in arrivo">
+  <rect width="400" height="500" fill="#F5F0E8"/>
+  <g fill="none" stroke="#B5654B" stroke-width="1.4" opacity="0.55">
+    <path d="M40 60 C 70 20, 120 20, 140 60 C 120 90, 70 90, 40 60 Z"/>
+    <path d="M40 60 C 60 60, 90 60, 140 60"/>
+    <path d="M360 440 C 330 480, 280 480, 260 440 C 280 410, 330 410, 360 440 Z"/>
+    <path d="M360 440 C 340 440, 310 440, 260 440"/>
+    <circle cx="200" cy="250" r="90" stroke-width="1"/>
+    <path d="M200 160 Q 230 250 200 340 Q 170 250 200 160 Z"/>
+  </g>
+  <g font-family="Georgia, 'Playfair Display', serif" fill="#1A1A1A">
+    <text x="200" y="245" text-anchor="middle" font-size="26" letter-spacing="4" opacity="0.75">AP</text>
+    <text x="200" y="270" text-anchor="middle" font-size="12" letter-spacing="1.5" fill="#4A4A44" opacity="0.85">Foto in arrivo</text>
+  </g>
+</svg>

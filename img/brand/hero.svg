@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Foto in evidenza di una borsa Auris Lab, in arrivo">
+  <rect width="1200" height="900" fill="#F5F0E8"/>
+  <g fill="none" stroke="#B5654B" stroke-width="1.6" opacity="0.5">
+    <path d="M150 150 C 220 60, 340 60, 380 150 C 340 220, 220 220, 150 150 Z"/>
+    <path d="M150 150 C 200 150, 280 150, 380 150"/>
+    <path d="M1050 750 C 980 840, 860 840, 820 750 C 860 680, 980 680, 1050 750 Z"/>
+    <path d="M1050 750 C 1000 750, 920 750, 820 750"/>
+    <circle cx="600" cy="450" r="220" stroke-width="1"/>
+    <path d="M600 260 Q 680 450 600 640 Q 520 450 600 260 Z"/>
+  </g>
+  <g font-family="Georgia, 'Playfair Display', serif" fill="#1A1A1A">
+    <text x="600" y="440" text-anchor="middle" font-size="64" letter-spacing="10" opacity="0.75">AP</text>
+    <text x="600" y="490" text-anchor="middle" font-size="20" letter-spacing="3" fill="#4A4A44" opacity="0.85">Foto in arrivo</text>
+  </g>
+</svg>
