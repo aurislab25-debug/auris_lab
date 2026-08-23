@@ -7,10 +7,10 @@
 const AURIS_CONFIG = {
   // Numero WhatsApp in formato internazionale, solo cifre (nessuno spazio, +, o trattino).
   // Esempio Italia: 39 + numero senza lo 0 iniziale -> "393331234567"
-  whatsappNumber: "393331234567", // TODO: sostituire con il numero reale
+  whatsappNumber: "393668053210",
   instagramHandle: "auris.lab",
   instagramUrl: "https://www.instagram.com/auris.lab/",
-  email: "hello@aurislab.it", // TODO: sostituire con l'indirizzo reale
+  email: "auris.lab.25@gmail.com",
   city: "Torino"
 };
 

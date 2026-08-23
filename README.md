@@ -20,10 +20,10 @@ img/brand/             Logo, hero, foto atelier (placeholder da sostituire)
 
 ## Cose da configurare prima del lancio
 
-1. **Numero WhatsApp reale** — in [`js/main.js`](js/main.js), variabile `AURIS_CONFIG.whatsappNumber` (formato internazionale, solo cifre, es. `393331234567`).
-2. **Email reale** — stesso file, `AURIS_CONFIG.email`.
+1. ~~Numero WhatsApp reale~~ — impostato in [`js/main.js`](js/main.js) (`AURIS_CONFIG.whatsappNumber`): `+39 366 805 3210`.
+2. ~~Email reale~~ — impostata in [`js/main.js`](js/main.js) (`AURIS_CONFIG.email`): `auris.lab.25@gmail.com`.
 3. **Foto prodotti** — sostituire i file placeholder in `img/prodotti/` e `img/brand/` con scatti reali (stesso nome file, o aggiorna i percorsi in `data/products.json`).
-4. **Dominio** — `robots.txt` e `sitemap.xml` puntano a `https://aurislab.it/`: aggiornare con il dominio Vercel/personalizzato reale.
+4. **Dominio** — `robots.txt` e `sitemap.xml` puntano a `https://aurislab.it/`: aggiornare con il dominio Vercel/personalizzato reale (attualmente `https://auris-lab-25.vercel.app/`).
 
 ## Aggiungere o modificare un prodotto
 
