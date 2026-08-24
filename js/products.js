@@ -1,5 +1,5 @@
 /*
- * Auris Lab — caricamento e rendering dei prodotti da data/products.json.
+ * Auri's Lab — caricamento e rendering dei prodotti da data/products.json.
  * Nessun backend: il catalogo è un file statico, modificabile a mano.
  */
 
@@ -130,7 +130,7 @@ async function initProductPage() {
     return;
   }
 
-  document.title = `${product.nome} — Auris Lab`;
+  document.title = `${product.nome} — Auri's Lab`;
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.setAttribute("content", `${product.nome}: ${product.descrizione_breve}`);
 

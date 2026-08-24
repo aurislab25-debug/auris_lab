@@ -1,5 +1,5 @@
 /*
- * Auris Lab — script condiviso da tutte le pagine.
+ * Auri's Lab — script condiviso da tutte le pagine.
  * Config brand, menu mobile, link WhatsApp/Instagram, anno footer.
  */
 

@@ -1,6 +1,6 @@
-# Auris Lab — sito
+# Auri's Lab — sito
 
-Sito statico vanilla (HTML/CSS/JS, nessun framework, nessuna build) per il brand di borse artigianali Auris Lab. Pronto per deploy statico su Vercel.
+Sito statico vanilla (HTML/CSS/JS, nessun framework, nessuna build) per il brand di borse artigianali Auri's Lab. Pronto per deploy statico su Vercel.
 
 ## Struttura
 

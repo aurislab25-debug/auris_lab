@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Auris Lab — stylesheet unico, vanilla CSS, nessuna dipendenza esterna
+   Auri's Lab — stylesheet unico, vanilla CSS, nessuna dipendenza esterna
    oltre ai font Google. Organizzato per sezione: variabili, reset,
    tipografia, layout condivisi (nav/footer), componenti, pagine, responsive.
    ========================================================================== */
@@ -184,7 +184,13 @@ h3 { font-size: 1.3rem; }
   letter-spacing: 0.02em;
 }
 
-.nav-brand img { width: 36px; height: 18px; }
+.nav-brand img {
+  width: auto;
+  height: 44px;
+  max-width: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 
 .nav-links {
   display: flex;
@@ -631,9 +637,20 @@ h3 { font-size: 1.3rem; }
 }
 
 .footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-serif);
   font-size: 1.3rem;
   margin-bottom: 10px;
+}
+
+.footer-brand img {
+  width: auto;
+  height: 30px;
+  max-width: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .footer-col h4 {
