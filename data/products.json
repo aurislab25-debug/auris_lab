@@ -45,7 +45,7 @@
     "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
     "tempo_realizzazione": null,
     "immagine_principale": "img/prodotti/celeste-1.jpg",
-    "immagini": ["img/prodotti/celeste-1.jpg", "img/prodotti/celeste-2.jpg"]
+    "immagini": ["img/prodotti/celeste-1.jpg", "img/prodotti/celeste-2.jpg", "img/prodotti/celeste-3.jpg"]
   },
   {
     "id": "perla",
@@ -164,8 +164,8 @@
     },
     "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
     "tempo_realizzazione": null,
-    "immagine_principale": "img/prodotti/valentina-1.jpg",
-    "immagini": ["img/prodotti/valentina-1.jpg", "img/prodotti/valentina-2.jpg"]
+    "immagine_principale": "img/prodotti/valentina-2.jpg",
+    "immagini": ["img/prodotti/valentina-2.jpg", "img/prodotti/valentina-1.jpg"]
   },
   {
     "id": "sole",
@@ -190,5 +190,53 @@
     "tempo_realizzazione": null,
     "immagine_principale": "img/prodotti/sole-1.jpg",
     "immagini": ["img/prodotti/sole-1.jpg", "img/prodotti/sole-2.jpg"]
+  },
+  {
+    "id": "ambra",
+    "nome": "Ambra",
+    "categoria": { "it": "Clutch", "en": "Clutch" },
+    "stato": "disponibile",
+    "prezzo": 95,
+    "prezzo_display": { "it": "€95", "en": "€95" },
+    "descrizione_breve": {
+      "it": "Clutch a nuvola color sabbia con cuoricino bordeaux e catena oro.",
+      "en": "Sand-coloured cloud clutch with a burgundy heart charm and a gold chain."
+    },
+    "descrizione_estesa": {
+      "it": "La stessa silhouette morbida a nuvola della famiglia Gemma, in un neutro caldo color sabbia. Un cuoricino all'uncinetto bordeaux decora il lato, la catena dorata removibile la trasforma in una tracolla. Fodera interna chiara con targhetta.",
+      "en": "The same soft cloud silhouette as the Gemma family, in a warm sandy neutral. A burgundy crochet heart decorates the side, and the removable gold chain turns it into a crossbody. Light inner lining with a tag."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, fodera interna, catena in metallo dorato",
+      "en": "Crochet yarn, inner lining, gold-tone metal chain"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/ambra-1.jpg",
+    "immagini": ["img/prodotti/ambra-1.jpg", "img/prodotti/ambra-2.jpg", "img/prodotti/ambra-3.jpg"]
+  },
+  {
+    "id": "bianca",
+    "nome": "Bianca",
+    "categoria": { "it": "Tracolla", "en": "Crossbody bag" },
+    "stato": "disponibile",
+    "prezzo": 100,
+    "prezzo_display": { "it": "€100", "en": "€100" },
+    "descrizione_breve": {
+      "it": "Borsa a spalla bianco panna, tono su tono, con manico a corda intrecciata.",
+      "en": "Cream white shoulder bag, tone-on-tone, with a twisted rope handle."
+    },
+    "descrizione_estesa": {
+      "it": "Una borsa dalla silhouette morbida e arrotondata, interamente bianco panna. Il manico lungo, lavorato a corda intrecciata nello stesso filato, la rende una tracolla essenziale e versatile, da abbinare a tutto.",
+      "en": "A bag with a soft, rounded silhouette, entirely in cream white. The long handle, worked as a twisted rope in the same yarn, makes it an essential, versatile crossbody that goes with everything."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, manico a corda intrecciata",
+      "en": "Crochet yarn, twisted rope handle"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/bianca-1.jpg",
+    "immagini": ["img/prodotti/bianca-1.jpg", "img/prodotti/bianca-2.jpg"]
   }
 ]
