@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Accedi — Gestione borse Auri's Lab</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/brand/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+  <main class="admin-login-wrap">
+    <div class="admin-login-card">
+      <div class="admin-login-brand">
+        <img src="../img/brand/logo-ap-monogram.png" alt="Auri's Lab">
+        <span>Gestione borse</span>
+      </div>
+      <p class="admin-login-hint">Accedi con l'email e la password che ti sono state date.</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required autocomplete="current-password">
+        </div>
+        <p id="login-error" class="admin-error" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block" id="login-submit">Accedi</button>
+      </form>
+      <p class="admin-login-forgot">
+        Password dimenticata? <a href="#" id="reset-link">Ricevi un link via email</a>
+      </p>
+      <p id="reset-msg" class="admin-hint" hidden></p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../js/admin.js"></script>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const errorEl = document.getElementById("login-error");
+      const submitBtn = document.getElementById("login-submit");
+      errorEl.hidden = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Accesso in corso…";
+
+      const { error } = await adminClient.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        errorEl.textContent = "Email o password non corrette. Riprova.";
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Accedi";
+        return;
+      }
+
+      location.href = "index.html";
+    });
+
+    document.getElementById("reset-link").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const msgEl = document.getElementById("reset-msg");
+      if (!email) {
+        msgEl.textContent = "Scrivi prima la tua email qui sopra, poi clicca di nuovo.";
+        msgEl.hidden = false;
+        return;
+      }
+      await adminClient.auth.resetPasswordForEmail(email);
+      msgEl.textContent = "Se l'email è corretta, ti abbiamo mandato un link per reimpostare la password.";
+      msgEl.hidden = false;
+    });
+
+    // Se la sessione è già attiva, salta direttamente alla lista.
+    adminClient.auth.getSession().then(({ data: { session } }) => {
+      if (session) location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

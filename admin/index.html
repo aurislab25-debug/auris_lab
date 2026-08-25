@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Gestione borse — Auri's Lab</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/brand/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-brand">
+        <img src="../img/brand/logo-ap-monogram.png" alt="Auri's Lab">
+        <span>Gestione borse</span>
+      </div>
+      <button type="button" class="btn btn-outline" id="admin-logout">Esci</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-toolbar">
+      <h1>Le tue borse</h1>
+      <a href="prodotto.html?nuovo=1" class="btn btn-primary">+ Nuova borsa</a>
+    </div>
+
+    <p id="admin-list-status" class="admin-hint">Caricamento…</p>
+
+    <div class="admin-product-list" id="admin-product-list"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../js/admin.js"></script>
+  <script>
+    async function loadList() {
+      const session = await requireAuth();
+      if (!session) return;
+      wireLogout();
+
+      const statusEl = document.getElementById("admin-list-status");
+      const listEl = document.getElementById("admin-product-list");
+
+      const { data, error } = await adminClient
+        .from("products")
+        .select("*")
+        .order("ordine", { ascending: true });
+
+      if (error) {
+        statusEl.textContent = "Non sono riuscita a caricare le borse. Riprova tra poco.";
+        return;
+      }
+
+      if (!data.length) {
+        statusEl.textContent = "Non hai ancora nessuna borsa. Comincia con \"+ Nuova borsa\".";
+        return;
+      }
+
+      statusEl.hidden = true;
+      listEl.innerHTML = data.map(rowHTML).join("");
+
+      listEl.querySelectorAll("[data-delete]").forEach((btn) => {
+        btn.addEventListener("click", () => deleteProduct(btn.dataset.delete, btn.dataset.nome));
+      });
+    }
+
+    function rowHTML(p) {
+      const cover = (p.immagini && p.immagini[0]) || "";
+      const nome = escapeHTML(p.nome);
+      const categoria = escapeHTML((p.categoria && p.categoria.it) || "");
+      const prezzo = escapeHTML((p.prezzo_display && p.prezzo_display.it) || "");
+      const statoLabel = p.stato === "disponibile" ? "Disponibile" : "Su ordinazione";
+      const pubLabel = p.pubblicato
+        ? '<span class="admin-badge admin-badge--published">Pubblicata</span>'
+        : '<span class="admin-badge admin-badge--draft">Bozza</span>';
+      return `
+        <article class="admin-product-row">
+          <div class="admin-product-thumb">
+            ${cover ? `<img src="${cover}" alt="" loading="lazy">` : ""}
+          </div>
+          <div class="admin-product-info">
+            <div class="admin-product-title">${nome} ${pubLabel}</div>
+            <div class="admin-product-meta">${categoria} · ${statoLabel} · ${prezzo}</div>
+          </div>
+          <div class="admin-product-actions">
+            <a href="prodotto.html?id=${encodeURIComponent(p.id)}" class="btn btn-outline">Modifica</a>
+            <button type="button" class="btn btn-ghost" data-delete="${escapeHTML(p.id)}" data-nome="${nome}">Elimina</button>
+          </div>
+        </article>
+      `;
+    }
+
+    async function deleteProduct(id, nome) {
+      if (!confirm(`Eliminare definitivamente "${nome}"? Non si può annullare.`)) return;
+      const { error } = await adminClient.from("products").delete().eq("id", id);
+      if (error) {
+        alert("Non sono riuscita a eliminarla. Riprova.");
+        return;
+      }
+      loadList();
+    }
+
+    loadList();
+  </script>
+</body>
+</html>

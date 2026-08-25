@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Modifica borsa — Auri's Lab</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/brand/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-brand">
+        <img src="../img/brand/logo-ap-monogram.png" alt="Auri's Lab">
+        <span>Gestione borse</span>
+      </div>
+      <button type="button" class="btn btn-outline" id="admin-logout">Esci</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-toolbar">
+      <h1 id="page-title">Nuova borsa</h1>
+      <a href="index.html" class="btn btn-ghost">← Torna alla lista</a>
+    </div>
+
+    <p id="form-status" class="admin-hint">Caricamento…</p>
+
+    <div class="admin-editor" id="admin-editor" hidden>
+      <form id="product-form" class="admin-form">
+        <div class="admin-field-status">
+          <span id="pub-badge" class="admin-badge admin-badge--draft">Nuova (non ancora salvata)</span>
+          <span id="id-hint" class="admin-hint"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="f-nome">Nome della borsa</label>
+          <input type="text" id="f-nome" required placeholder="Es. Iris">
+        </div>
+
+        <div class="admin-field-pair">
+          <div class="form-group">
+            <label for="f-categoria-it">Categoria (italiano)</label>
+            <input type="text" id="f-categoria-it" placeholder="Es. Clutch, Tracolla, Mini bag…">
+          </div>
+          <div class="form-group">
+            <label for="f-categoria-en">Categoria (inglese) <button type="button" class="admin-copy-btn" data-copy-to="f-categoria-en" data-copy-from="f-categoria-it">copia da IT</button></label>
+            <input type="text" id="f-categoria-en">
+          </div>
+        </div>
+
+        <div class="admin-field-row3">
+          <div class="form-group">
+            <label for="f-stato">Disponibilità</label>
+            <select id="f-stato">
+              <option value="disponibile">Disponibile subito</option>
+              <option value="ordinazione">Su ordinazione</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-prezzo">Prezzo (numero, per il filtro — es. 95)</label>
+            <input type="number" id="f-prezzo" min="0" step="1">
+          </div>
+          <div class="form-group">
+            <label for="f-ordine">Posizione nel catalogo</label>
+            <input type="number" id="f-ordine" min="1" step="1">
+          </div>
+        </div>
+
+        <div class="admin-field-pair">
+          <div class="form-group">
+            <label for="f-prezzo-display-it">Prezzo mostrato (italiano)</label>
+            <input type="text" id="f-prezzo-display-it" placeholder="Es. €95, Da €75, Su richiesta">
+          </div>
+          <div class="form-group">
+            <label for="f-prezzo-display-en">Prezzo mostrato (inglese) <button type="button" class="admin-copy-btn" data-copy-to="f-prezzo-display-en" data-copy-from="f-prezzo-display-it">copia da IT</button></label>
+            <input type="text" id="f-prezzo-display-en">
+          </div>
+        </div>
+
+        <div class="admin-field-pair">
+          <div class="form-group">
+            <label for="f-descrizione-breve-it">Descrizione breve (italiano)</label>
+            <textarea id="f-descrizione-breve-it" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="f-descrizione-breve-en">Descrizione breve (inglese) <button type="button" class="admin-copy-btn" data-copy-to="f-descrizione-breve-en" data-copy-from="f-descrizione-breve-it">copia da IT</button></label>
+            <textarea id="f-descrizione-breve-en" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-field-pair">
+          <div class="form-group">
+            <label for="f-descrizione-estesa-it">Descrizione completa (italiano)</label>
+            <textarea id="f-descrizione-estesa-it" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="f-descrizione-estesa-en">Descrizione completa (inglese) <button type="button" class="admin-copy-btn" data-copy-to="f-descrizione-estesa-en" data-copy-from="f-descrizione-estesa-it">copia da IT</button></label>
+            <textarea id="f-descrizione-estesa-en" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-field-pair">
+          <div class="form-group">
+            <label for="f-materiali-it">Materiali (italiano)</label>
+            <input type="text" id="f-materiali-it">
+          </div>
+          <div class="form-group">
+            <label for="f-materiali-en">Materiali (inglese) <button type="button" class="admin-copy-btn" data-copy-to="f-materiali-en" data-copy-from="f-materiali-it">copia da IT</button></label>
+            <input type="text" id="f-materiali-en">
+          </div>
+        </div>
+
+        <div class="admin-field-pair">
+          <div class="form-group">
+            <label for="f-dimensioni-it">Dimensioni (italiano)</label>
+            <input type="text" id="f-dimensioni-it" placeholder="Es. Misure su richiesta, oppure 38 x 32 x 12 cm">
+          </div>
+          <div class="form-group">
+            <label for="f-dimensioni-en">Dimensioni (inglese) <button type="button" class="admin-copy-btn" data-copy-to="f-dimensioni-en" data-copy-from="f-dimensioni-it">copia da IT</button></label>
+            <input type="text" id="f-dimensioni-en">
+          </div>
+        </div>
+
+        <div class="admin-field-pair">
+          <div class="form-group">
+            <label for="f-tempo-it">Tempo di realizzazione (solo se su ordinazione)</label>
+            <input type="text" id="f-tempo-it" placeholder="Es. 2-3 settimane — lascia vuoto se disponibile subito">
+          </div>
+          <div class="form-group">
+            <label for="f-tempo-en">Tempo di realizzazione (inglese) <button type="button" class="admin-copy-btn" data-copy-to="f-tempo-en" data-copy-from="f-tempo-it">copia da IT</button></label>
+            <input type="text" id="f-tempo-en">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-immagini-input">Foto della borsa</label>
+          <div class="admin-image-list" id="immagini-list"></div>
+          <input type="file" id="f-immagini-input" accept="image/*" multiple>
+          <p class="admin-hint">La prima foto è quella di copertina nel catalogo. Usa le frecce per riordinarle.</p>
+        </div>
+
+        <div class="admin-actions">
+          <button type="button" class="btn btn-outline" id="save-draft-btn">Salva come bozza</button>
+          <button type="button" class="btn btn-primary" id="publish-btn">Pubblica sul sito</button>
+        </div>
+        <p id="save-status" class="admin-hint" hidden></p>
+
+        <div class="admin-danger-zone" id="delete-zone" hidden>
+          <button type="button" class="btn btn-ghost" id="delete-btn">Elimina questa borsa</button>
+        </div>
+      </form>
+
+      <aside class="admin-preview">
+        <h2>Anteprima — così la vedranno i clienti</h2>
+        <p class="admin-hint">Si aggiorna mentre scrivi. Non è ancora salvata finché non premi uno dei due pulsanti.</p>
+        <div class="admin-preview-block">
+          <h3>Card nel catalogo</h3>
+          <div class="admin-preview-card-frame">
+            <div class="product-grid" id="preview-card"></div>
+          </div>
+        </div>
+        <div class="admin-preview-block">
+          <h3>Pagina della borsa</h3>
+          <div id="preview-detail"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/products.js"></script>
+  <script>
+    let productId = null;
+    let isNew = true;
+    let currentPubblicato = false;
+    let currentImages = [];
+
+    function val(id) { return document.getElementById(id).value.trim(); }
+    function setVal(id, v) { document.getElementById(id).value = v || ""; }
+
+    function buildProductFromForm() {
+      const tempo = val("f-tempo-it") || val("f-tempo-en")
+        ? { it: val("f-tempo-it"), en: val("f-tempo-en") }
+        : null;
+      return {
+        id: productId || slugify(val("f-nome")) || "anteprima",
+        nome: val("f-nome") || "Nome borsa",
+        categoria: { it: val("f-categoria-it"), en: val("f-categoria-en") },
+        stato: document.getElementById("f-stato").value,
+        prezzo: parseFloat(val("f-prezzo")) || null,
+        prezzo_display: { it: val("f-prezzo-display-it"), en: val("f-prezzo-display-en") },
+        descrizione_breve: { it: val("f-descrizione-breve-it"), en: val("f-descrizione-breve-en") },
+        descrizione_estesa: { it: val("f-descrizione-estesa-it"), en: val("f-descrizione-estesa-en") },
+        materiali: { it: val("f-materiali-it"), en: val("f-materiali-en") },
+        dimensioni: { it: val("f-dimensioni-it"), en: val("f-dimensioni-en") },
+        tempo_realizzazione: tempo,
+        immagini: currentImages,
+        ordine: parseInt(val("f-ordine"), 10) || 0,
+      };
+    }
+
+    function renderPreview() {
+      const product = buildProductFromForm();
+      document.getElementById("preview-card").innerHTML = currentImages.length ? productCardHTML(product) : "<p class=\"admin-hint\">Carica almeno una foto per vedere l'anteprima.</p>";
+      const detailEl = document.getElementById("preview-detail");
+      detailEl.innerHTML = currentImages.length ? productDetailHTML(product) : "";
+      wireContactLinks(detailEl);
+      wireContactLinks(document.getElementById("preview-card"));
+      wireProductGallery(detailEl);
+    }
+
+    function renderImageList() {
+      const el = document.getElementById("immagini-list");
+      el.innerHTML = currentImages.map((url, i) => `
+        <div class="admin-image-thumb">
+          <img src="${url}" alt="">
+          <div class="admin-image-thumb-actions">
+            <button type="button" data-move-up="${i}" ${i === 0 ? "disabled" : ""} aria-label="Sposta prima">↑</button>
+            <button type="button" data-move-down="${i}" ${i === currentImages.length - 1 ? "disabled" : ""} aria-label="Sposta dopo">↓</button>
+            <button type="button" data-remove="${i}" aria-label="Rimuovi">✕</button>
+          </div>
+        </div>
+      `).join("");
+
+      el.querySelectorAll("[data-move-up]").forEach((b) => b.addEventListener("click", () => {
+        const i = +b.dataset.moveUp;
+        [currentImages[i - 1], currentImages[i]] = [currentImages[i], currentImages[i - 1]];
+        renderImageList();
+        renderPreview();
+      }));
+      el.querySelectorAll("[data-move-down]").forEach((b) => b.addEventListener("click", () => {
+        const i = +b.dataset.moveDown;
+        [currentImages[i + 1], currentImages[i]] = [currentImages[i], currentImages[i + 1]];
+        renderImageList();
+        renderPreview();
+      }));
+      el.querySelectorAll("[data-remove]").forEach((b) => b.addEventListener("click", () => {
+        currentImages.splice(+b.dataset.remove, 1);
+        renderImageList();
+        renderPreview();
+      }));
+    }
+
+    async function uploadImages(files) {
+      const slug = productId || slugify(val("f-nome")) || "borsa";
+      for (const file of files) {
+        const safeName = file.name.replace(/[^a-zA-Z0-9.\-]/g, "_");
+        const path = `${slug}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${safeName}`;
+        const { error } = await adminClient.storage.from("prodotti-immagini").upload(path, file);
+        if (error) {
+          alert(`Caricamento non riuscito per "${file.name}". Riprova.`);
+          continue;
+        }
+        const { data } = adminClient.storage.from("prodotti-immagini").getPublicUrl(path);
+        currentImages.push(data.publicUrl);
+      }
+      renderImageList();
+      renderPreview();
+    }
+
+    function wireCopyButtons() {
+      document.querySelectorAll(".admin-copy-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setVal(btn.dataset.copyTo, val(btn.dataset.copyFrom));
+          renderPreview();
+        });
+      });
+    }
+
+    function wireLivePreview() {
+      document.querySelectorAll("#product-form input, #product-form textarea, #product-form select").forEach((el) => {
+        el.addEventListener("input", renderPreview);
+        el.addEventListener("change", renderPreview);
+      });
+    }
+
+    function updateStatusBadge() {
+      const badge = document.getElementById("pub-badge");
+      if (isNew) {
+        badge.textContent = "Nuova (non ancora salvata)";
+        badge.className = "admin-badge admin-badge--draft";
+      } else if (currentPubblicato) {
+        badge.textContent = "Pubblicata sul sito";
+        badge.className = "admin-badge admin-badge--published";
+      } else {
+        badge.textContent = "Bozza (non visibile sul sito)";
+        badge.className = "admin-badge admin-badge--draft";
+      }
+      document.getElementById("id-hint").textContent = productId ? `ID: ${productId}` : "";
+    }
+
+    async function save(pubblicato) {
+      const nome = val("f-nome");
+      if (!nome) { alert("Scrivi il nome della borsa."); return; }
+      if (!currentImages.length) { alert("Carica almeno una foto prima di salvare."); return; }
+
+      let id = productId;
+      if (!id) {
+        id = slugify(nome);
+        if (!id) { alert("Il nome deve contenere almeno una lettera."); return; }
+        const { data: existing } = await adminClient.from("products").select("id").eq("id", id).maybeSingle();
+        if (existing) {
+          alert(`Esiste già una borsa con un nome molto simile (id "${id}"). Prova a cambiare leggermente il nome.`);
+          return;
+        }
+      }
+
+      if (pubblicato === false && currentPubblicato === true) {
+        if (!confirm("Questa borsa è attualmente pubblicata: salvarla come bozza la nasconderà dal sito. Continuare?")) return;
+      }
+
+      const payload = buildProductFromForm();
+      payload.id = id;
+      payload.pubblicato = pubblicato;
+      if (!payload.ordine) delete payload.ordine;
+
+      const statusEl = document.getElementById("save-status");
+      statusEl.hidden = false;
+      statusEl.textContent = "Salvataggio in corso…";
+
+      const { error } = await adminClient.from("products").upsert(payload);
+      if (error) {
+        statusEl.textContent = "Salvataggio non riuscito: " + error.message;
+        return;
+      }
+
+      location.href = "index.html";
+    }
+
+    async function deleteThisProduct() {
+      if (!confirm(`Eliminare definitivamente "${val("f-nome")}"? Non si può annullare.`)) return;
+      const { error } = await adminClient.from("products").delete().eq("id", productId);
+      if (error) { alert("Non sono riuscita a eliminarla. Riprova."); return; }
+      location.href = "index.html";
+    }
+
+    async function init() {
+      const session = await requireAuth();
+      if (!session) return;
+      wireLogout();
+
+      const params = new URLSearchParams(location.search);
+      const editId = params.get("id");
+
+      if (editId) {
+        isNew = false;
+        productId = editId;
+        document.getElementById("page-title").textContent = "Modifica borsa";
+        const { data, error } = await adminClient.from("products").select("*").eq("id", editId).maybeSingle();
+        if (error || !data) {
+          document.getElementById("form-status").textContent = "Borsa non trovata.";
+          return;
+        }
+        currentPubblicato = data.pubblicato;
+        currentImages = data.immagini || [];
+        setVal("f-nome", data.nome);
+        setVal("f-categoria-it", data.categoria && data.categoria.it);
+        setVal("f-categoria-en", data.categoria && data.categoria.en);
+        document.getElementById("f-stato").value = data.stato;
+        setVal("f-prezzo", data.prezzo);
+        setVal("f-prezzo-display-it", data.prezzo_display && data.prezzo_display.it);
+        setVal("f-prezzo-display-en", data.prezzo_display && data.prezzo_display.en);
+        setVal("f-descrizione-breve-it", data.descrizione_breve && data.descrizione_breve.it);
+        setVal("f-descrizione-breve-en", data.descrizione_breve && data.descrizione_breve.en);
+        setVal("f-descrizione-estesa-it", data.descrizione_estesa && data.descrizione_estesa.it);
+        setVal("f-descrizione-estesa-en", data.descrizione_estesa && data.descrizione_estesa.en);
+        setVal("f-materiali-it", data.materiali && data.materiali.it);
+        setVal("f-materiali-en", data.materiali && data.materiali.en);
+        setVal("f-dimensioni-it", data.dimensioni && data.dimensioni.it);
+        setVal("f-dimensioni-en", data.dimensioni && data.dimensioni.en);
+        setVal("f-tempo-it", data.tempo_realizzazione && data.tempo_realizzazione.it);
+        setVal("f-tempo-en", data.tempo_realizzazione && data.tempo_realizzazione.en);
+        setVal("f-ordine", data.ordine);
+        document.getElementById("delete-zone").hidden = false;
+      } else {
+        document.getElementById("page-title").textContent = "Nuova borsa";
+        document.getElementById("f-stato").value = "disponibile";
+        const { data } = await adminClient.from("products").select("ordine").order("ordine", { ascending: false }).limit(1);
+        setVal("f-ordine", data && data.length ? data[0].ordine + 1 : 1);
+      }
+
+      renderImageList();
+      updateStatusBadge();
+      renderPreview();
+      wireCopyButtons();
+      wireLivePreview();
+
+      document.getElementById("f-immagini-input").addEventListener("change", (e) => {
+        uploadImages([...e.target.files]);
+        e.target.value = "";
+      });
+      document.getElementById("save-draft-btn").addEventListener("click", () => save(false));
+      document.getElementById("publish-btn").addEventListener("click", () => save(true));
+      document.getElementById("delete-btn").addEventListener("click", deleteThisProduct);
+
+      document.getElementById("form-status").hidden = true;
+      document.getElementById("admin-editor").hidden = false;
+    }
+
+    init();
+  </script>
+</body>
+</html>

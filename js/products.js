@@ -1,13 +1,20 @@
 /*
- * Auri's Lab — caricamento e rendering dei prodotti da data/products.json.
- * Nessun backend: il catalogo è un file statico, modificabile a mano.
- * I campi testuali del prodotto sono bilingue ({it, en}); la lingua attiva
- * si legge da <html lang>. I percorsi verso i file condivisi (dati, immagini,
- * altre pagine) sono relativi alla root: da /en/ serve risalire di un livello.
+ * Auri's Lab — caricamento e rendering dei prodotti da Supabase (tabella "products").
+ * Il sito resta statico (nessun server/build): il client supabase-js gira nel browser,
+ * la sicurezza è garantita da una policy RLS che lascia leggere alla chiave pubblica
+ * solo le righe con pubblicato = true (le bozze si vedono solo dal pannello admin,
+ * autenticato). I campi testuali sono bilingue ({it, en}); la lingua attiva si legge
+ * da <html lang>. Le immagini sono URL assoluti di Supabase Storage.
  */
 
 const LANG = document.documentElement.lang === "en" ? "en" : "it";
-const BASE = location.pathname.replace(/\/+$/, "").startsWith("/en") ? "../" : "";
+// Riusa il client gia' creato da js/admin.js quando questo file viene incluso
+// nel pannello admin (per l'anteprima) — evita due istanze GoTrueClient sulla stessa pagina.
+const supabaseClient = window.supabaseClient || supabase.createClient(
+  "https://ktoxehrtcmkbkpawdfvb.supabase.co",
+  "sb_publishable_MATBwj-ILmgTy3gL_zcIGg_oqtyrssv"
+);
+window.supabaseClient = supabaseClient;
 
 const UI = {
   it: {
@@ -63,9 +70,13 @@ function loc(field) {
 }
 
 async function loadProducts() {
-  const res = await fetch(`${BASE}data/products.json`);
-  if (!res.ok) throw new Error("Impossibile caricare il catalogo prodotti");
-  return res.json();
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .eq("pubblicato", true)
+    .order("ordine", { ascending: true });
+  if (error) throw error;
+  return data;
 }
 
 function waMessageFor(product) {
@@ -80,11 +91,12 @@ function statusBadge(product) {
 
 function productCardHTML(product) {
   const categoria = loc(product.categoria);
+  const cover = product.immagini && product.immagini[0];
   return `
     <article class="product-card">
       <a href="prodotto.html?id=${encodeURIComponent(product.id)}" class="product-card-media">
         ${statusBadge(product)}
-        <img src="${BASE}${product.immagine_principale}" alt="Borsa ${product.nome}, ${categoria}" loading="lazy" width="400" height="500">
+        <img src="${cover}" alt="Borsa ${product.nome}, ${categoria}" loading="lazy" width="400" height="500">
       </a>
       <div class="product-card-body">
         <span class="category">${categoria}</span>
@@ -161,6 +173,67 @@ function specRow(label, value) {
   return `<tr><th>${label}</th><td>${value}</td></tr>`;
 }
 
+/**
+ * Costruisce il markup della scheda prodotto completa (breadcrumb + galleria + info).
+ * Estratta a parte perché il pannello admin la riusa per l'anteprima live, così
+ * anteprima e pagina pubblica sono garantite identiche.
+ */
+function productDetailHTML(product) {
+  const categoria = loc(product.categoria);
+  const images = product.immagini && product.immagini.length ? product.immagini : [];
+  const statusText = product.stato === "disponibile"
+    ? t.statusAvailable
+    : t.statusOnOrder(loc(product.tempo_realizzazione));
+
+  return `
+    <div class="breadcrumb">
+      <a href="catalogo.html">${t.catalogLabel}</a> / <span>${product.nome}</span>
+    </div>
+    <div class="product-detail">
+      <div class="product-gallery">
+        <div class="gallery-main">
+          <img id="gallery-main-img" src="${images[0] || ""}" alt="Borsa ${product.nome}, ${categoria}" width="400" height="500">
+        </div>
+        <div class="gallery-thumbs" role="tablist" aria-label="Altre foto del prodotto">
+          ${images.map((src, i) => `
+            <button type="button" role="tab" aria-current="${i === 0 ? "true" : "false"}" data-src="${src}" aria-label="Foto ${i + 1} di ${product.nome}">
+              <img src="${src}" alt="" loading="lazy" width="72" height="90">
+            </button>
+          `).join("")}
+        </div>
+      </div>
+      <div class="product-info">
+        <span class="category">${categoria}</span>
+        <h1>${product.nome}</h1>
+        <p class="price">${loc(product.prezzo_display)}</p>
+        <div class="status-line">${statusBadge(product)} <span>${statusText}</span></div>
+        <p class="product-description">${loc(product.descrizione_estesa)}</p>
+        <table class="spec-table">
+          ${specRow(t.materials, loc(product.materiali))}
+          ${specRow(t.dimensions, loc(product.dimensioni))}
+          ${specRow(t.leadTime, loc(product.tempo_realizzazione))}
+        </table>
+        <a class="btn btn-primary btn-block" data-wa-link data-wa-message="${waMessageFor(product).replace(/"/g, "&quot;")}">
+          ${t.waCtaProduct}
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+/** Wiring interattivo della galleria (cambio foto principale al click sulle thumb). */
+function wireProductGallery(mount) {
+  const thumbs = mount.querySelectorAll(".gallery-thumbs button");
+  const mainImg = mount.querySelector("#gallery-main-img");
+  thumbs.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      thumbs.forEach((b) => b.setAttribute("aria-current", "false"));
+      btn.setAttribute("aria-current", "true");
+      mainImg.src = btn.dataset.src;
+    });
+  });
+}
+
 async function initProductPage() {
   const mount = document.getElementById("product-detail");
   if (!mount) return;
@@ -188,63 +261,13 @@ async function initProductPage() {
     return;
   }
 
-  const categoria = loc(product.categoria);
   document.title = `${product.nome} — Auri's Lab`;
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.setAttribute("content", `${product.nome}: ${loc(product.descrizione_breve)}`);
 
-  const images = product.immagini && product.immagini.length ? product.immagini : [product.immagine_principale];
-
-  const statusText = product.stato === "disponibile"
-    ? t.statusAvailable
-    : t.statusOnOrder(loc(product.tempo_realizzazione));
-
-  mount.innerHTML = `
-    <div class="breadcrumb">
-      <a href="catalogo.html">${t.catalogLabel}</a> / <span>${product.nome}</span>
-    </div>
-    <div class="product-detail">
-      <div class="product-gallery">
-        <div class="gallery-main">
-          <img id="gallery-main-img" src="${BASE}${images[0]}" alt="Borsa ${product.nome}, ${categoria}" width="400" height="500">
-        </div>
-        <div class="gallery-thumbs" role="tablist" aria-label="Altre foto del prodotto">
-          ${images.map((src, i) => `
-            <button type="button" role="tab" aria-current="${i === 0 ? "true" : "false"}" data-src="${BASE}${src}" aria-label="Foto ${i + 1} di ${product.nome}">
-              <img src="${BASE}${src}" alt="" loading="lazy" width="72" height="90">
-            </button>
-          `).join("")}
-        </div>
-      </div>
-      <div class="product-info">
-        <span class="category">${categoria}</span>
-        <h1>${product.nome}</h1>
-        <p class="price">${loc(product.prezzo_display)}</p>
-        <div class="status-line">${statusBadge(product)} <span>${statusText}</span></div>
-        <p class="product-description">${loc(product.descrizione_estesa)}</p>
-        <table class="spec-table">
-          ${specRow(t.materials, loc(product.materiali))}
-          ${specRow(t.dimensions, loc(product.dimensioni))}
-          ${specRow(t.leadTime, loc(product.tempo_realizzazione))}
-        </table>
-        <a class="btn btn-primary btn-block" data-wa-link data-wa-message="${waMessageFor(product).replace(/"/g, "&quot;")}">
-          ${t.waCtaProduct}
-        </a>
-      </div>
-    </div>
-  `;
-
+  mount.innerHTML = productDetailHTML(product);
   wireContactLinks(mount);
-
-  const thumbs = mount.querySelectorAll(".gallery-thumbs button");
-  const mainImg = mount.querySelector("#gallery-main-img");
-  thumbs.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      thumbs.forEach((b) => b.setAttribute("aria-current", "false"));
-      btn.setAttribute("aria-current", "true");
-      mainImg.src = btn.dataset.src;
-    });
-  });
+  wireProductGallery(mount);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
