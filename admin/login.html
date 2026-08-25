@@ -18,29 +18,58 @@
         <img src="../img/brand/logo-ap-monogram.png" alt="Auri's Lab">
         <span>Gestione borse</span>
       </div>
-      <p class="admin-login-hint">Accedi con l'email e la password che ti sono state date.</p>
-      <form id="login-form">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required autocomplete="username">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required autocomplete="current-password">
-        </div>
-        <p id="login-error" class="admin-error" hidden></p>
-        <button type="submit" class="btn btn-primary btn-block" id="login-submit">Accedi</button>
-      </form>
-      <p class="admin-login-forgot">
-        Password dimenticata? <a href="#" id="reset-link">Ricevi un link via email</a>
-      </p>
-      <p id="reset-msg" class="admin-hint" hidden></p>
+
+      <div id="login-view">
+        <p class="admin-login-hint">Accedi con l'email e la password che ti sono state date.</p>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+          </div>
+          <p id="login-error" class="admin-error" hidden></p>
+          <button type="submit" class="btn btn-primary btn-block" id="login-submit">Accedi</button>
+        </form>
+        <p class="admin-login-forgot">
+          Password dimenticata? <a href="#" id="reset-link">Ricevi un link via email</a>
+        </p>
+        <p id="reset-msg" class="admin-hint" hidden></p>
+      </div>
+
+      <div id="recovery-view" hidden>
+        <p class="admin-login-hint">Scegli la tua nuova password per accedere alla gestione borse.</p>
+        <form id="recovery-form">
+          <div class="form-group">
+            <label for="new-password">Nuova password</label>
+            <input type="password" id="new-password" required autocomplete="new-password" minlength="6">
+          </div>
+          <div class="form-group">
+            <label for="new-password-confirm">Ripeti la nuova password</label>
+            <input type="password" id="new-password-confirm" required autocomplete="new-password" minlength="6">
+          </div>
+          <p id="recovery-error" class="admin-error" hidden></p>
+          <button type="submit" class="btn btn-primary btn-block" id="recovery-submit">Salva password ed entra</button>
+        </form>
+      </div>
     </div>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="../js/admin.js"></script>
   <script>
+    // Il link "imposta la tua password" arrivato via email riporta qui con
+    // #type=recovery nell'URL: in quel caso mostriamo il modulo "scegli password"
+    // invece del login normale, e NON saltiamo avanti anche se una sessione risulta gia' attiva.
+    const isRecoveryFlow = location.hash.includes("type=recovery");
+
+    if (isRecoveryFlow) {
+      document.getElementById("login-view").hidden = true;
+      document.getElementById("recovery-view").hidden = false;
+    }
+
     document.getElementById("login-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("email").value.trim();
@@ -73,15 +102,49 @@
         msgEl.hidden = false;
         return;
       }
-      await adminClient.auth.resetPasswordForEmail(email);
+      await adminClient.auth.resetPasswordForEmail(email, {
+        redirectTo: location.origin + location.pathname,
+      });
       msgEl.textContent = "Se l'email è corretta, ti abbiamo mandato un link per reimpostare la password.";
       msgEl.hidden = false;
     });
 
-    // Se la sessione è già attiva, salta direttamente alla lista.
-    adminClient.auth.getSession().then(({ data: { session } }) => {
-      if (session) location.href = "index.html";
+    document.getElementById("recovery-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const pw1 = document.getElementById("new-password").value;
+      const pw2 = document.getElementById("new-password-confirm").value;
+      const errorEl = document.getElementById("recovery-error");
+      errorEl.hidden = true;
+
+      if (pw1 !== pw2) {
+        errorEl.textContent = "Le due password non coincidono.";
+        errorEl.hidden = false;
+        return;
+      }
+
+      const submitBtn = document.getElementById("recovery-submit");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Salvataggio…";
+
+      const { error } = await adminClient.auth.updateUser({ password: pw1 });
+
+      if (error) {
+        errorEl.textContent = "Non sono riuscita a salvare la password. Riprova con il link ricevuto via email.";
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Salva password ed entra";
+        return;
+      }
+
+      location.href = "index.html";
     });
+
+    // Fuori dal flusso di recupero password: se la sessione e' gia' attiva, salta direttamente alla lista.
+    if (!isRecoveryFlow) {
+      adminClient.auth.getSession().then(({ data: { session } }) => {
+        if (session) location.href = "index.html";
+      });
+    }
   </script>
 </body>
 </html>
