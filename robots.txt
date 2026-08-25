@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+# Copre anche le pagine in inglese sotto /en/ (nessuna regola dedicata necessaria)
 
 Sitemap: https://aurislab.it/sitemap.xml
