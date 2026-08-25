@@ -142,5 +142,197 @@
     "tempo_realizzazione": { "it": "2-3 settimane", "en": "2-3 weeks" },
     "immagine_principale": "img/prodotti/placeholder-1.svg",
     "immagini": ["img/prodotti/placeholder-1.svg", "img/prodotti/placeholder-4.svg"]
+  },
+  {
+    "id": "viola",
+    "nome": "Viola",
+    "categoria": { "it": "Tracolla", "en": "Crossbody bag" },
+    "stato": "disponibile",
+    "prezzo": 120,
+    "prezzo_display": { "it": "€120", "en": "€120" },
+    "descrizione_breve": {
+      "it": "Borsa a busta viola intenso, con doppia catena argento removibile.",
+      "en": "Deep purple envelope bag, with a removable double silver chain."
+    },
+    "descrizione_estesa": {
+      "it": "Una borsa a busta dal colore viola intenso, lavorata a uncinetto per una trama compatta e strutturata. La doppia catena argentata, lunga e regolabile, la trasforma in una tracolla per la sera o per il giorno.",
+      "en": "An envelope bag in a deep purple, crocheted for a compact, structured texture. The long, adjustable double silver chain turns it into a crossbody for evening or daytime wear."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, catena in metallo argentato",
+      "en": "Crochet yarn, silver-tone metal chain"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/viola-1.jpg",
+    "immagini": ["img/prodotti/viola-1.jpg"]
+  },
+  {
+    "id": "celeste",
+    "nome": "Celeste",
+    "categoria": { "it": "Tracolla", "en": "Crossbody bag" },
+    "stato": "disponibile",
+    "prezzo": 120,
+    "prezzo_display": { "it": "€120", "en": "€120" },
+    "descrizione_breve": {
+      "it": "Borsa a spalla azzurro polvere, stessa doppia catena argento di Viola.",
+      "en": "Dusty blue shoulder bag, with the same double silver chain as Viola."
+    },
+    "descrizione_estesa": {
+      "it": "Stessa lavorazione e la stessa doppia catena di Viola, in un azzurro polvere più delicato. Fodera interna fantasia, manico integrato più la tracolla a catena removibile.",
+      "en": "Same construction and double chain as Viola, in a softer dusty blue. Patterned inner lining, a built-in handle plus the removable chain strap."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, catena in metallo argentato, fodera interna",
+      "en": "Crochet yarn, silver-tone metal chain, inner lining"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/celeste-1.jpg",
+    "immagini": ["img/prodotti/celeste-1.jpg", "img/prodotti/celeste-2.jpg"]
+  },
+  {
+    "id": "perla",
+    "nome": "Perla",
+    "categoria": { "it": "Mini bag", "en": "Mini bag" },
+    "stato": "disponibile",
+    "prezzo": 80,
+    "prezzo_display": { "it": "€80", "en": "€80" },
+    "descrizione_breve": {
+      "it": "Pochette rettangolare color sabbia, tracolla regolabile e targhetta cuoio.",
+      "en": "Sand-coloured rectangular pochette, adjustable strap and leather tag."
+    },
+    "descrizione_estesa": {
+      "it": "Una pochette compatta e versatile, perfetta per l'essenziale. Tracolla in tessuto regolabile per portarla a tracolla o a mano, con una targhetta in cuoio che firma il pezzo.",
+      "en": "A compact, versatile pochette, perfect for the essentials. Adjustable fabric strap to wear crossbody or by hand, with a leather tag that signs the piece."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, tracolla in tessuto regolabile, targhetta in cuoio",
+      "en": "Crochet yarn, adjustable fabric strap, leather tag"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/perla-1.jpg",
+    "immagini": ["img/prodotti/perla-1.jpg", "img/prodotti/perla-2.jpg"]
+  },
+  {
+    "id": "rosa",
+    "nome": "Rosa",
+    "categoria": { "it": "Clutch", "en": "Clutch" },
+    "stato": "disponibile",
+    "prezzo": 80,
+    "prezzo_display": { "it": "€80", "en": "€80" },
+    "descrizione_breve": {
+      "it": "Clutch a nuvola rosa antico, morbida e strutturata, con manico integrato.",
+      "en": "Dusty rose cloud clutch, soft yet structured, with a built-in handle."
+    },
+    "descrizione_estesa": {
+      "it": "Una clutch dalla silhouette morbida e imbottita, lavorata a uncinetto per una trama densa. Il manico è integrato nella lavorazione, senza catena: essenziale e versatile, dal giorno alla sera.",
+      "en": "A clutch with a soft, padded silhouette, crocheted for a dense texture. The handle is built into the weave, no chain: essential and versatile, from day to evening."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, imbottitura interna",
+      "en": "Crochet yarn, inner padding"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/rosa-1.jpg",
+    "immagini": ["img/prodotti/rosa-1.jpg", "img/prodotti/rosa-2.jpg", "img/prodotti/rosa-3.jpg"]
+  },
+  {
+    "id": "gemma",
+    "nome": "Gemma",
+    "categoria": { "it": "Clutch", "en": "Clutch" },
+    "stato": "disponibile",
+    "prezzo": 95,
+    "prezzo_display": { "it": "€95", "en": "€95" },
+    "descrizione_breve": {
+      "it": "Clutch a nuvola verde smeraldo con cuoricino decorativo, disponibile anche con catena.",
+      "en": "Emerald green cloud clutch with a decorative heart charm, also available with a chain."
+    },
+    "descrizione_estesa": {
+      "it": "Stessa silhouette morbida a nuvola, in un verde smeraldo brillante. Un piccolo cuoricino all'uncinetto decora il lato della borsa, mentre la fodera interna scura la rende pratica tutti i giorni. Disponibile anche con catena argentata removibile per portarla a tracolla.",
+      "en": "The same soft cloud silhouette, in a bright emerald green. A small crochet heart decorates the side of the bag, while the dark inner lining keeps it practical for everyday use. Also available with a removable silver chain to wear crossbody."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, fodera interna, catena in metallo argentato (opzionale)",
+      "en": "Crochet yarn, inner lining, silver-tone metal chain (optional)"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/gemma-1.jpg",
+    "immagini": ["img/prodotti/gemma-1.jpg", "img/prodotti/gemma-2.jpg", "img/prodotti/gemma-3.jpg"]
+  },
+  {
+    "id": "peonia",
+    "nome": "Peonia",
+    "categoria": { "it": "Clutch", "en": "Clutch" },
+    "stato": "disponibile",
+    "prezzo": 95,
+    "prezzo_display": { "it": "€95", "en": "€95" },
+    "descrizione_breve": {
+      "it": "Clutch a nuvola bordeaux con rosellina decorativa e catena argento.",
+      "en": "Burgundy cloud clutch with a decorative rosette and a silver chain."
+    },
+    "descrizione_estesa": {
+      "it": "La stessa clutch a nuvola in un bordeaux profondo, impreziosita da una rosellina all'uncinetto sul lato. La catena argentata removibile la rende una borsa a tracolla per le occasioni speciali.",
+      "en": "The same cloud clutch in a deep burgundy, finished with a small crochet rosette on the side. The removable silver chain turns it into a crossbody bag for special occasions."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, catena in metallo argentato",
+      "en": "Crochet yarn, silver-tone metal chain"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/peonia-1.jpg",
+    "immagini": ["img/prodotti/peonia-1.jpg", "img/prodotti/peonia-2.jpg"]
+  },
+  {
+    "id": "valentina",
+    "nome": "Valentina",
+    "categoria": { "it": "Tracolla", "en": "Crossbody bag" },
+    "stato": "disponibile",
+    "prezzo": 130,
+    "prezzo_display": { "it": "€130", "en": "€130" },
+    "descrizione_breve": {
+      "it": "Borsa strutturata marrone con foulard decorativo e catena oro.",
+      "en": "Structured brown bag with a decorative scarf detail and a gold chain."
+    },
+    "descrizione_estesa": {
+      "it": "Una borsa più strutturata, lavorata a uncinetto fitto per una trama solida. Un foulard fantasia annodato sul davanti dà un tocco personale, mentre la catena dorata la rende perfetta da portare a tracolla o a spalla.",
+      "en": "A more structured bag, crocheted tightly for a solid texture. A patterned scarf knotted on the front adds a personal touch, while the gold chain makes it perfect to wear crossbody or on the shoulder."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto, catena in metallo dorato, foulard decorativo",
+      "en": "Crochet yarn, gold-tone metal chain, decorative scarf"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/valentina-1.jpg",
+    "immagini": ["img/prodotti/valentina-1.jpg", "img/prodotti/valentina-2.jpg"]
+  },
+  {
+    "id": "sole",
+    "nome": "Sole",
+    "categoria": { "it": "Custodia occhiali", "en": "Sunglasses case" },
+    "stato": "disponibile",
+    "prezzo": 35,
+    "prezzo_display": { "it": "€35", "en": "€35" },
+    "descrizione_breve": {
+      "it": "Astuccio porta-occhiali rosa terracotta, morbido e compatto.",
+      "en": "Terracotta pink sunglasses case, soft and compact."
+    },
+    "descrizione_estesa": {
+      "it": "Un piccolo astuccio all'uncinetto pensato per proteggere gli occhiali da sole (o da vista) nella borsa. Trama densa e morbida, senza chiusura per un accesso rapido.",
+      "en": "A small crochet case designed to protect your sunglasses (or glasses) inside your bag. A dense, soft weave, with no closure for quick access."
+    },
+    "materiali": {
+      "it": "Filato all'uncinetto",
+      "en": "Crochet yarn"
+    },
+    "dimensioni": { "it": "Misure su richiesta", "en": "Size on request" },
+    "tempo_realizzazione": null,
+    "immagine_principale": "img/prodotti/sole-1.jpg",
+    "immagini": ["img/prodotti/sole-1.jpg", "img/prodotti/sole-2.jpg"]
   }
 ]
