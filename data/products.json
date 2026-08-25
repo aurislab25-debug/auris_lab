@@ -2,14 +2,23 @@
   {
     "id": "norma",
     "nome": "Norma",
-    "categoria": "Tote a rete",
+    "categoria": { "it": "Tote a rete", "en": "Net tote" },
     "stato": "disponibile",
     "prezzo": 95,
-    "prezzo_display": "€95",
-    "descrizione_breve": "Tote a rete in cotone, capiente e leggera, per l'uso quotidiano.",
-    "descrizione_estesa": "Una tote realizzata con la tecnica del filet all'uncinetto, pensata per essere portata tutti i giorni. La trama a rete allarga la borsa in base al contenuto senza perdere forma. Manici rinforzati per un'ottima tenuta anche a pieno carico.",
-    "materiali": "Cotone 100%, manici in cotone ritorto rinforzato",
-    "dimensioni": "38 x 32 x 12 cm, manico 55 cm",
+    "prezzo_display": { "it": "€95", "en": "€95" },
+    "descrizione_breve": {
+      "it": "Tote a rete in cotone, capiente e leggera, per l'uso quotidiano.",
+      "en": "Net-stitch tote in cotton, roomy and light, for everyday use."
+    },
+    "descrizione_estesa": {
+      "it": "Una tote realizzata con la tecnica del filet all'uncinetto, pensata per essere portata tutti i giorni. La trama a rete allarga la borsa in base al contenuto senza perdere forma. Manici rinforzati per un'ottima tenuta anche a pieno carico.",
+      "en": "A tote made with the filet crochet technique, designed to be carried every day. The net weave expands the bag to fit its contents without losing shape. Reinforced handles for a secure hold even when fully loaded."
+    },
+    "materiali": {
+      "it": "Cotone 100%, manici in cotone ritorto rinforzato",
+      "en": "100% cotton, reinforced twisted cotton handles"
+    },
+    "dimensioni": { "it": "38 x 32 x 12 cm, manico 55 cm", "en": "38 x 32 x 12 cm, 55 cm handle" },
     "tempo_realizzazione": null,
     "immagine_principale": "img/prodotti/placeholder-1.svg",
     "immagini": ["img/prodotti/placeholder-1.svg", "img/prodotti/placeholder-2.svg"]
@@ -17,14 +26,23 @@
   {
     "id": "iris",
     "nome": "Iris",
-    "categoria": "Secchiello",
+    "categoria": { "it": "Secchiello", "en": "Bucket bag" },
     "stato": "disponibile",
     "prezzo": 110,
-    "prezzo_display": "€110",
-    "descrizione_breve": "Secchiello strutturato con coulisse e doppio manico corto.",
-    "descrizione_estesa": "Un secchiello dalla silhouette morbida ma strutturata, chiusura a coulisse con laccio intrecciato a mano e doppio manico corto per portarla a mano o al polso. Fodera interna in cotone con tasca porta telefono.",
-    "materiali": "Cotone 100%, fodera in cotone, laccio in pelle rigenerata",
-    "dimensioni": "26 x 30 cm, manico 18 cm",
+    "prezzo_display": { "it": "€110", "en": "€110" },
+    "descrizione_breve": {
+      "it": "Secchiello strutturato con coulisse e doppio manico corto.",
+      "en": "Structured bucket bag with drawstring and short double handle."
+    },
+    "descrizione_estesa": {
+      "it": "Un secchiello dalla silhouette morbida ma strutturata, chiusura a coulisse con laccio intrecciato a mano e doppio manico corto per portarla a mano o al polso. Fodera interna in cotone con tasca porta telefono.",
+      "en": "A bucket bag with a soft yet structured silhouette, drawstring closure with a hand-braided cord and a short double handle to carry by hand or on the wrist. Cotton lining with a phone pocket inside."
+    },
+    "materiali": {
+      "it": "Cotone 100%, fodera in cotone, laccio in pelle rigenerata",
+      "en": "100% cotton, cotton lining, regenerated leather cord"
+    },
+    "dimensioni": { "it": "26 x 30 cm, manico 18 cm", "en": "26 x 30 cm, 18 cm handle" },
     "tempo_realizzazione": null,
     "immagine_principale": "img/prodotti/placeholder-2.svg",
     "immagini": ["img/prodotti/placeholder-2.svg", "img/prodotti/placeholder-3.svg"]
@@ -32,29 +50,47 @@
   {
     "id": "alba",
     "nome": "Alba",
-    "categoria": "Mini bag",
+    "categoria": { "it": "Mini bag", "en": "Mini bag" },
     "stato": "ordinazione",
     "prezzo": null,
-    "prezzo_display": "Su richiesta",
-    "descrizione_breve": "Mini bag a tracolla, su misura nei colori che preferisci.",
-    "descrizione_estesa": "Una piccola borsa a tracolla lunga, perfetta per l'essenziale: telefono, chiavi, portafoglio. Realizzata su ordinazione nella combinazione di colori richiesta, con tracolla regolabile.",
-    "materiali": "Cotone 100%, tracolla regolabile",
-    "dimensioni": "18 x 14 cm, tracolla regolabile fino a 130 cm",
-    "tempo_realizzazione": "2-3 settimane",
+    "prezzo_display": { "it": "Su richiesta", "en": "On request" },
+    "descrizione_breve": {
+      "it": "Mini bag a tracolla, su misura nei colori che preferisci.",
+      "en": "Mini crossbody bag, made to order in the colours you like."
+    },
+    "descrizione_estesa": {
+      "it": "Una piccola borsa a tracolla lunga, perfetta per l'essenziale: telefono, chiavi, portafoglio. Realizzata su ordinazione nella combinazione di colori richiesta, con tracolla regolabile.",
+      "en": "A small bag with a long crossbody strap, perfect for the essentials: phone, keys, wallet. Made to order in the requested colour combination, with an adjustable strap."
+    },
+    "materiali": { "it": "Cotone 100%, tracolla regolabile", "en": "100% cotton, adjustable strap" },
+    "dimensioni": {
+      "it": "18 x 14 cm, tracolla regolabile fino a 130 cm",
+      "en": "18 x 14 cm, strap adjustable up to 130 cm"
+    },
+    "tempo_realizzazione": { "it": "2-3 settimane", "en": "2-3 weeks" },
     "immagine_principale": "img/prodotti/placeholder-3.svg",
     "immagini": ["img/prodotti/placeholder-3.svg"]
   },
   {
     "id": "terra",
     "nome": "Terra",
-    "categoria": "Shopper grande",
+    "categoria": { "it": "Shopper grande", "en": "Large shopper" },
     "stato": "disponibile",
     "prezzo": 130,
-    "prezzo_display": "€130",
-    "descrizione_breve": "Shopper grande, pensata per la spesa, il mare, la vita di tutti i giorni.",
-    "descrizione_estesa": "La più capiente della collezione. Trama fitta e resistente, base rinforzata che mantiene la forma anche a borsa vuota. Manici lunghi per portarla in spalla.",
-    "materiali": "Cotone 100%, base in cotone doppio filo",
-    "dimensioni": "42 x 36 x 14 cm, manico 60 cm",
+    "prezzo_display": { "it": "€130", "en": "€130" },
+    "descrizione_breve": {
+      "it": "Shopper grande, pensata per la spesa, il mare, la vita di tutti i giorni.",
+      "en": "Large shopper, designed for grocery runs, the beach, and everyday life."
+    },
+    "descrizione_estesa": {
+      "it": "La più capiente della collezione. Trama fitta e resistente, base rinforzata che mantiene la forma anche a borsa vuota. Manici lunghi per portarla in spalla.",
+      "en": "The roomiest piece in the collection. Dense, sturdy weave with a reinforced base that keeps its shape even when empty. Long handles to carry on the shoulder."
+    },
+    "materiali": {
+      "it": "Cotone 100%, base in cotone doppio filo",
+      "en": "100% cotton, double-thread cotton base"
+    },
+    "dimensioni": { "it": "42 x 36 x 14 cm, manico 60 cm", "en": "42 x 36 x 14 cm, 60 cm handle" },
     "tempo_realizzazione": null,
     "immagine_principale": "img/prodotti/placeholder-4.svg",
     "immagini": ["img/prodotti/placeholder-4.svg", "img/prodotti/placeholder-1.svg"]
@@ -62,30 +98,48 @@
   {
     "id": "luna",
     "nome": "Luna",
-    "categoria": "Clutch",
+    "categoria": { "it": "Clutch", "en": "Clutch" },
     "stato": "ordinazione",
     "prezzo": 75,
-    "prezzo_display": "Da €75",
-    "descrizione_breve": "Clutch da sera, compatta, su ordinazione nei colori richiesti.",
-    "descrizione_estesa": "Una clutch minimale per le occasioni speciali. Chiusura con bottone a pressione rivestito e fodera interna morbida. Disponibile anche con piccola tracolla removibile su richiesta.",
-    "materiali": "Cotone mercerizzato, fodera in raso di cotone",
-    "dimensioni": "24 x 16 cm",
-    "tempo_realizzazione": "1-2 settimane",
+    "prezzo_display": { "it": "Da €75", "en": "From €75" },
+    "descrizione_breve": {
+      "it": "Clutch da sera, compatta, su ordinazione nei colori richiesti.",
+      "en": "Compact evening clutch, made to order in the requested colours."
+    },
+    "descrizione_estesa": {
+      "it": "Una clutch minimale per le occasioni speciali. Chiusura con bottone a pressione rivestito e fodera interna morbida. Disponibile anche con piccola tracolla removibile su richiesta.",
+      "en": "A minimal clutch for special occasions. Covered snap-button closure and a soft inner lining. Also available with a small removable strap on request."
+    },
+    "materiali": {
+      "it": "Cotone mercerizzato, fodera in raso di cotone",
+      "en": "Mercerised cotton, cotton satin lining"
+    },
+    "dimensioni": { "it": "24 x 16 cm", "en": "24 x 16 cm" },
+    "tempo_realizzazione": { "it": "1-2 settimane", "en": "1-2 weeks" },
     "immagine_principale": "img/prodotti/placeholder-2.svg",
     "immagini": ["img/prodotti/placeholder-2.svg"]
   },
   {
     "id": "vento",
     "nome": "Vento",
-    "categoria": "Tracolla",
+    "categoria": { "it": "Tracolla", "en": "Crossbody bag" },
     "stato": "ordinazione",
     "prezzo": null,
-    "prezzo_display": "Su richiesta",
-    "descrizione_breve": "Borsa a tracolla media, versatile, su misura nelle dimensioni.",
-    "descrizione_estesa": "Una borsa a tracolla di formato medio, via di mezzo tra la mini bag e la tote. Su ordinazione è possibile richiedere lievi variazioni di dimensione e la posizione della tracolla.",
-    "materiali": "Cotone 100%, tracolla regolabile in cotone intrecciato",
-    "dimensioni": "30 x 24 x 10 cm, tracolla regolabile",
-    "tempo_realizzazione": "2-3 settimane",
+    "prezzo_display": { "it": "Su richiesta", "en": "On request" },
+    "descrizione_breve": {
+      "it": "Borsa a tracolla media, versatile, su misura nelle dimensioni.",
+      "en": "Medium crossbody bag, versatile, made to order in your preferred size."
+    },
+    "descrizione_estesa": {
+      "it": "Una borsa a tracolla di formato medio, via di mezzo tra la mini bag e la tote. Su ordinazione è possibile richiedere lievi variazioni di dimensione e la posizione della tracolla.",
+      "en": "A medium-sized crossbody bag, halfway between the mini bag and the tote. Made to order, with the option to request slight variations in size and strap position."
+    },
+    "materiali": {
+      "it": "Cotone 100%, tracolla regolabile in cotone intrecciato",
+      "en": "100% cotton, adjustable woven cotton strap"
+    },
+    "dimensioni": { "it": "30 x 24 x 10 cm, tracolla regolabile", "en": "30 x 24 x 10 cm, adjustable strap" },
+    "tempo_realizzazione": { "it": "2-3 settimane", "en": "2-3 weeks" },
     "immagine_principale": "img/prodotti/placeholder-1.svg",
     "immagini": ["img/prodotti/placeholder-1.svg", "img/prodotti/placeholder-4.svg"]
   }

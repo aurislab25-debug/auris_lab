@@ -75,8 +75,25 @@ function setFooterYear() {
   if (el) el.textContent = String(new Date().getFullYear());
 }
 
+/** Ricorda l'ultima lingua effettivamente vista, così una futura visita alla root sa se reindirizzare. */
+function persistCurrentLocale() {
+  try {
+    localStorage.setItem("auris_locale", document.documentElement.lang === "en" ? "en" : "it");
+  } catch (e) {}
+}
+
+/** Preserva eventuali query string (es. ?id=... in prodotto.html) quando si cambia lingua dal selettore. */
+function wireLangSwitch() {
+  if (!location.search) return;
+  document.querySelectorAll(".lang-switch a").forEach((a) => {
+    a.href = a.href + location.search;
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   wireContactLinks();
   setFooterYear();
+  persistCurrentLocale();
+  wireLangSwitch();
 });

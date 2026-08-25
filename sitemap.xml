@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aurislab.it/</loc></url>
-  <url><loc>https://aurislab.it/catalogo.html</loc></url>
-  <url><loc>https://aurislab.it/chi-siamo.html</loc></url>
-  <url><loc>https://aurislab.it/contatti.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://aurislab.it/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aurislab.it/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurislab.it/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurislab.it/"/>
+  </url>
+  <url>
+    <loc>https://aurislab.it/en/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aurislab.it/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurislab.it/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurislab.it/"/>
+  </url>
+  <url>
+    <loc>https://aurislab.it/catalogo.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aurislab.it/catalogo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurislab.it/en/catalogo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurislab.it/catalogo.html"/>
+  </url>
+  <url>
+    <loc>https://aurislab.it/en/catalogo.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aurislab.it/catalogo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurislab.it/en/catalogo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurislab.it/catalogo.html"/>
+  </url>
+  <url>
+    <loc>https://aurislab.it/chi-siamo.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aurislab.it/chi-siamo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurislab.it/en/chi-siamo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurislab.it/chi-siamo.html"/>
+  </url>
+  <url>
+    <loc>https://aurislab.it/en/chi-siamo.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aurislab.it/chi-siamo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurislab.it/en/chi-siamo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurislab.it/chi-siamo.html"/>
+  </url>
+  <url>
+    <loc>https://aurislab.it/contatti.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aurislab.it/contatti.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurislab.it/en/contatti.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurislab.it/contatti.html"/>
+  </url>
+  <url>
+    <loc>https://aurislab.it/en/contatti.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aurislab.it/contatti.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aurislab.it/en/contatti.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aurislab.it/contatti.html"/>
+  </url>
 </urlset>

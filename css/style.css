@@ -238,6 +238,31 @@ h3 { font-size: 1.3rem; }
   transition: transform var(--transition), opacity var(--transition);
 }
 
+/* --- Selettore lingua IT/EN ------------------------------------------------ */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+}
+
+.lang-switch a {
+  padding: 2px 3px;
+  color: var(--color-text-soft);
+  transition: color var(--transition);
+}
+
+.lang-switch a:hover { color: var(--color-text); }
+
+.lang-switch a.lang-active {
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lang-switch .lang-sep { color: var(--color-border); }
+
 .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -737,6 +762,9 @@ h3 { font-size: 1.3rem; }
 
   .nav-toggle { display: flex; }
   .nav-cta .btn-outline-text { display: none; }
+  /* Sul mobile lo spazio nella barra e' troppo stretto per stare accanto al bottone WhatsApp:
+     il selettore lingua resta comunque disponibile nel footer. */
+  .nav-cta .lang-switch { display: none; }
 }
 
 @media (min-width: 640px) {
