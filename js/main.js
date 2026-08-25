@@ -82,11 +82,18 @@ function persistCurrentLocale() {
   } catch (e) {}
 }
 
-/** Preserva eventuali query string (es. ?id=... in prodotto.html) quando si cambia lingua dal selettore. */
+/**
+ * Selettore lingua: preserva eventuali query string (es. ?id=... in prodotto.html)
+ * e salva subito la scelta in localStorage PRIMA di seguire il link — altrimenti,
+ * cliccando IT da una pagina /en/, la pagina italiana di destinazione troverebbe
+ * ancora "en" salvato e reindirizzerebbe l'utente dritto indietro a /en/.
+ */
 function wireLangSwitch() {
-  if (!location.search) return;
-  document.querySelectorAll(".lang-switch a").forEach((a) => {
-    a.href = a.href + location.search;
+  document.querySelectorAll(".lang-switch a[data-set-locale]").forEach((a) => {
+    if (location.search) a.href = a.href + location.search;
+    a.addEventListener("click", () => {
+      try { localStorage.setItem("auris_locale", a.getAttribute("data-set-locale")); } catch (e) {}
+    });
   });
 }
 
